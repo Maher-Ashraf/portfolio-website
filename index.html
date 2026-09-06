@@ -232,7 +232,7 @@
         svg {
             width: 100%;
             height: 100%;
-            max-width: 500px;
+            max-width: 550px;
             filter: drop-shadow(0 0 80px rgba(255, 106, 0, 0.15));
         }
 
@@ -597,85 +597,112 @@
             <div class="hero-content">
                 <div class="kicker">ARCHITECTURAL ENGINEER</div>
                 <h1>Maher<br><span class="accent">Ashraf</span></h1>
-                <div class="role">Designing Spaces. Building Impact.</div>
-                <p class="tagline"><strong>Vision translates into form.</strong> Ideas become structures. Spaces shape how people live, work, and connect. Every line, every surface, every detail—intentional. Every project drives forward.</p>
+                <div class="role">Architectural Engineer</div>
+                <p class="tagline"><strong>Designing spaces.<br>Building impact.</strong></p>
+                <p style="margin-top: 30px; font-size: 16px; line-height: 1.8; color: #b8b8b8; max-width: 480px; font-weight: 400; letter-spacing: 0.5px;">
+                    <strong>NEW PERSPECTIVES.</strong><br>
+                    <strong style="color: var(--orange);">REAL SOLUTIONS.</strong>
+                </p>
             </div>
             <div class="hero-visual">
-                <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Back perspective lines -->
-                    <line x1="250" y1="100" x2="180" y2="200" stroke="#444" stroke-width="1" opacity="0.3"/>
-                    <line x1="250" y1="100" x2="320" y2="200" stroke="#444" stroke-width="1" opacity="0.3"/>
-                    <line x1="180" y1="200" x2="180" y2="500" stroke="#444" stroke-width="1" opacity="0.3"/>
-                    <line x1="320" y1="200" x2="320" y2="500" stroke="#444" stroke-width="1" opacity="0.3"/>
+                <svg viewBox="0 0 600 650" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
 
-                    <!-- Main building left face -->
-                    <polygon points="100,250 180,200 180,500 100,500" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- Ground/Base -->
+                    <line x1="50" y1="580" x2="550" y2="580" stroke="#444" stroke-width="2" opacity="0.5"/>
                     
-                    <!-- Main building front face -->
-                    <polygon points="180,200 350,200 350,500 180,500" fill="rgba(20,20,20,0.5)" stroke="#333" stroke-width="2"/>
-                    
-                    <!-- Main building right face -->
-                    <polygon points="350,200 420,250 420,500 350,500" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+                    <!-- Perspective grid lines on ground -->
+                    <line x1="80" y1="580" x2="150" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="150" y1="580" x2="220" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="220" y1="580" x2="290" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="290" y1="580" x2="360" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="360" y1="580" x2="430" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="430" y1="580" x2="500" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
 
-                    <!-- Roof -->
-                    <polygon points="180,200 350,200 250,100" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- BACKGROUND BUILDING (LEFT BACK) -->
+                    <polygon points="100,250 180,180 180,580 100,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.4"/>
+                    <line x1="100" y1="330" x2="180" y2="270" stroke="#333" stroke-width="0.8" opacity="0.3"/>
+                    <line x1="100" y1="410" x2="180" y2="350" stroke="#333" stroke-width="0.8" opacity="0.3"/>
+                    <line x1="100" y1="490" x2="180" y2="430" stroke="#333" stroke-width="0.8" opacity="0.3"/>
 
-                    <!-- Left side building (smaller) -->
-                    <polygon points="80,350 140,320 140,500 80,500" fill="none" stroke="#333" stroke-width="2" opacity="0.6"/>
-                    
-                    <!-- Right side building (taller) -->
-                    <polygon points="380,280 450,250 450,500 380,500" fill="none" stroke="#333" stroke-width="2" opacity="0.6"/>
+                    <!-- MAIN CENTER BUILDING (LARGE) -->
+                    <!-- Left face -->
+                    <polygon points="140,260 240,140 240,580 140,580" fill="none" stroke="#555" stroke-width="2.5"/>
+                    <!-- Front face -->
+                    <polygon points="240,140 420,140 420,580 240,580" fill="rgba(30,30,30,0.4)" stroke="#555" stroke-width="2.5"/>
+                    <!-- Right face -->
+                    <polygon points="420,140 480,200 480,580 420,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                    <!-- Top roof -->
+                    <line x1="240" y1="140" x2="140" y2="260" stroke="#555" stroke-width="2.5"/>
+                    <line x1="240" y1="140" x2="420" y2="140" stroke="#555" stroke-width="2.5"/>
+                    <line x1="420" y1="140" x2="480" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
 
-                    <!-- Ground/Base line -->
-                    <line x1="60" y1="500" x2="470" y2="500" stroke="#444" stroke-width="2" opacity="0.4"/>
+                    <!-- Horizontal floor lines on main building -->
+                    <line x1="240" y1="220" x2="420" y2="220" stroke="#444" stroke-width="1" opacity="0.6"/>
+                    <line x1="240" y1="290" x2="420" y2="290" stroke="#444" stroke-width="1" opacity="0.6"/>
+                    <line x1="240" y1="360" x2="420" y2="360" stroke="#444" stroke-width="1" opacity="0.6"/>
+                    <line x1="240" y1="430" x2="420" y2="430" stroke="#444" stroke-width="1" opacity="0.6"/>
+                    <line x1="240" y1="500" x2="420" y2="500" stroke="#444" stroke-width="1" opacity="0.6"/>
 
-                    <!-- Horizontal floor lines on front -->
-                    <line x1="180" y1="280" x2="350" y2="280" stroke="#444" stroke-width="1"/>
-                    <line x1="180" y1="340" x2="350" y2="340" stroke="#444" stroke-width="1"/>
-                    <line x1="180" y1="400" x2="350" y2="400" stroke="#444" stroke-width="1"/>
-                    <line x1="180" y1="450" x2="350" y2="450" stroke="#444" stroke-width="1"/>
+                    <!-- MAIN BUILDING WINDOWS - LARGE ORANGE -->
+                    <!-- Top row - outlined -->
+                    <rect x="270" y="160" width="50" height="50" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="340" y="160" width="50" height="50" fill="none" stroke="#ff6a00" stroke-width="2"/>
 
-                    <!-- Windows - Left upper -->
-                    <rect x="200" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
-                    <rect x="245" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
-                    <rect x="290" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <!-- Second row - filled with glow -->
+                    <rect x="270" y="245" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="340" y="245" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
 
-                    <!-- Windows - Second row -->
-                    <rect x="200" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
-                    <rect x="245" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
-                    <rect x="290" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <!-- Third row - filled -->
+                    <rect x="270" y="315" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="340" y="315" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
 
-                    <!-- Windows - Third row -->
-                    <rect x="200" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
-                    <rect x="245" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
-                    <rect x="290" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <!-- Fourth row - filled -->
+                    <rect x="270" y="385" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="340" y="385" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
 
-                    <!-- Windows - Bottom row -->
-                    <rect x="200" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
-                    <rect x="245" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
-                    <rect x="290" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <!-- Bottom row - outlined -->
+                    <rect x="270" y="455" width="50" height="45" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
+                    <rect x="340" y="455" width="50" height="45" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
 
-                    <!-- Right side building windows -->
-                    <rect x="395" y="340" width="40" height="80" fill="#ff8a2a" opacity="0.8"/>
-                    <rect x="395" y="430" width="40" height="50" fill="#ff8a2a" opacity="0.8"/>
+                    <!-- RIGHT SIDE BUILDING (TALL) -->
+                    <polygon points="470,220 540,160 540,580 470,580" fill="none" stroke="#333" stroke-width="2" opacity="0.7"/>
+                    <line x1="470" y1="300" x2="540" y2="240" stroke="#333" stroke-width="1" opacity="0.5"/>
+                    <line x1="470" y1="380" x2="540" y2="320" stroke="#333" stroke-width="1" opacity="0.5"/>
+                    <line x1="470" y1="460" x2="540" y2="400" stroke="#333" stroke-width="1" opacity="0.5"/>
 
-                    <!-- Left side building window -->
-                    <rect x="95" y="400" width="30" height="50" fill="#ff6a00" opacity="0.6"/>
+                    <!-- Right building large windows -->
+                    <rect x="485" y="280" width="45" height="100" fill="#ff8a2a" opacity="0.8" filter="url(#glow)"/>
+                    <rect x="485" y="420" width="45" height="70" fill="#ff8a2a" opacity="0.8" filter="url(#glow)"/>
 
-                    <!-- Door -->
-                    <rect x="260" y="440" width="30" height="60" fill="none" stroke="#666" stroke-width="1.5"/>
+                    <!-- LEFT SIDE SMALL BUILDING -->
+                    <polygon points="80,380 140,340 140,580 80,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.5"/>
+                    <line x1="80" y1="460" x2="140" y2="420" stroke="#333" stroke-width="0.8" opacity="0.3"/>
 
-                    <!-- Glow around windows -->
-                    <circle cx="217.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
-                    <circle cx="262.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
-                    <circle cx="307.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
+                    <!-- Left building window -->
+                    <rect x="95" y="400" width="35" height="60" fill="#ff6a00" opacity="0.7" filter="url(#glow)"/>
 
-                    <!-- Decorative perspective grid on ground -->
-                    <line x1="60" y1="500" x2="150" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
-                    <line x1="100" y1="500" x2="180" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
-                    <line x1="140" y1="500" x2="210" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
-                    <line x1="350" y1="500" x2="420" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
-                    <line x1="390" y1="500" x2="460" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                    <!-- Vertical lines for building structure -->
+                    <line x1="140" y1="260" x2="140" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
+                    <line x1="240" y1="140" x2="240" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
+                    <line x1="420" y1="140" x2="420" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
+                    <line x1="480" y1="200" x2="480" y2="580" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+
+                    <!-- Additional structural lines for depth -->
+                    <line x1="150" y1="160" x2="80" y2="240" stroke="#333" stroke-width="1" opacity="0.4"/>
+                    <line x1="310" y1="140" x2="250" y2="220" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <line x1="450" y1="140" x2="390" y2="200" stroke="#333" stroke-width="1" opacity="0.3"/>
+
+                    <!-- Subtle door outline -->
+                    <rect x="330" y="500" width="35" height="80" fill="none" stroke="#666" stroke-width="1"/>
                 </svg>
             </div>
         </section>
@@ -705,11 +732,11 @@
                         <div class="connect-value">maher_ashraf7</div>
                     </div>
                 </a>
-                <a href="https://discord.gg/maher_ashraf" target="_blank" rel="noopener" class="connect-card">
+                <a href="https://discord.com/users/maher_ashraf" target="_blank" rel="noopener" class="connect-card">
                     <div class="connect-icon">D</div>
                     <div class="connect-content">
                         <h3>Discord</h3>
-                        <div class="connect-value">join server</div>
+                        <div class="connect-value">maher_ashraf</div>
                     </div>
                 </a>
             </div>
@@ -765,7 +792,7 @@
         <!-- Footer -->
         <footer>
             <p>MAHER ASHRAF · ARCHITECTURAL ENGINEER · 2026</p>
-            <p style="margin-top: 20px;"><a href="https://discord.gg/maher_ashraf">DISCORD</a> · <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==">INSTAGRAM</a> · <a href="https://wa.me/qr/RHYSXO7MKLHEC1">WHATSAPP</a> · <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US">SNAPCHAT</a></p>
+            <p style="margin-top: 20px;"><a href="https://discord.com/users/maher_ashraf">DISCORD</a> · <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==">INSTAGRAM</a> · <a href="https://wa.me/qr/RHYSXO7MKLHEC1">WHATSAPP</a> · <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US">SNAPCHAT</a></p>
         </footer>
     </div>
 </body>
