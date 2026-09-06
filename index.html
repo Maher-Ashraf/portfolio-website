@@ -12,13 +12,9 @@
     <style>
         :root {
             --bg: #080808;
-            --panel: #111;
-            --line: #292929;
             --text: #f3f3f3;
-            --muted: #a7a7a7;
             --orange: #ff6a00;
             --orange-light: #ff8a2a;
-            --orange-dark: #cc5400;
         }
 
         * {
@@ -39,7 +35,6 @@
             line-height: 1.6;
         }
 
-        /* Grid background */
         body::before {
             content: "";
             position: fixed;
@@ -53,21 +48,10 @@
             z-index: -2;
         }
 
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 106, 0, 0.3), transparent);
-            z-index: 100;
-        }
-
         .wrap {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 60px;
         }
 
         /* Navigation */
@@ -116,64 +100,34 @@
             color: #999;
             transition: all 0.3s;
             position: relative;
-        }
-
-        nav .links a::after {
-            content: "";
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.3s;
+            text-decoration: underline;
         }
 
         nav .links a:hover {
             color: var(--orange);
         }
 
-        nav .links a:hover::after {
-            width: 100%;
-        }
-
         /* Hero Section */
         .hero {
             min-height: 720px;
             display: grid;
-            grid-template-columns: 1.1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             align-items: center;
-            gap: 60px;
+            gap: 80px;
             position: relative;
-            padding: 80px 0;
+            padding: 100px 0 80px;
         }
 
-        .hero-content h1 {
-            font-size: clamp(64px, 10vw, 140px);
-            line-height: 0.9;
-            letter-spacing: -4px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .accent {
-            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
+        .hero-content {
+            z-index: 2;
         }
 
         .kicker {
             color: var(--orange);
             letter-spacing: 3px;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -183,35 +137,51 @@
         .kicker::before {
             content: "";
             width: 20px;
-            height: 1px;
+            height: 2px;
             background: var(--orange);
+        }
+
+        h1 {
+            font-size: 100px;
+            line-height: 0.9;
+            letter-spacing: -4px;
+            font-weight: 900;
+            margin-bottom: 0;
+        }
+
+        .name-white {
+            color: #fff;
+        }
+
+        .name-orange {
+            color: var(--orange);
         }
 
         .role {
             font-size: 18px;
-            margin: 30px 0;
-            color: #e0e0e0;
+            margin: 40px 0 50px;
+            color: #ddd;
             display: flex;
             align-items: center;
             gap: 16px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .role::before {
             content: "";
-            width: 32px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--orange), transparent);
+            width: 30px;
+            height: 1px;
+            background: var(--orange);
         }
 
         .tagline {
-            margin-top: 30px;
             font-size: 16px;
             line-height: 1.8;
-            color: #b8b8b8;
-            max-width: 480px;
+            color: #999;
+            max-width: 420px;
             font-weight: 400;
             letter-spacing: 0.5px;
+            margin-bottom: 40px;
         }
 
         .tagline strong {
@@ -219,31 +189,42 @@
             font-weight: 600;
         }
 
-        /* Hero Visual - Architectural Building Drawing */
+        .tagline .orange {
+            color: var(--orange);
+        }
+
+        .perspectives {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #999;
+            max-width: 420px;
+            font-weight: 400;
+        }
+
+        .perspectives strong {
+            color: #fff;
+        }
+
+        /* Hero Visual */
         .hero-visual {
             position: relative;
-            height: 550px;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
-            perspective: 1000px;
         }
 
         svg {
             width: 100%;
             height: 100%;
-            max-width: 550px;
-            filter: drop-shadow(0 0 80px rgba(255, 106, 0, 0.15));
+            max-width: 650px;
+            filter: drop-shadow(0 0 60px rgba(255, 106, 0, 0.2));
         }
 
         /* Sections */
         .section {
-            margin: 120px 0;
-            padding: 60px;
-            border: 1px solid rgba(255, 106, 0, 0.15);
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 106, 0, 0.02));
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            margin: 140px 0;
+            padding: 0;
         }
 
         .section-title {
@@ -251,7 +232,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--orange);
-            margin-bottom: 45px;
+            margin-bottom: 50px;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -260,8 +241,8 @@
 
         .section-title::before {
             content: "";
-            width: 24px;
-            height: 2px;
+            width: 30px;
+            height: 1px;
             background: var(--orange);
         }
 
@@ -274,10 +255,10 @@
 
         .connect-card {
             border: 1px solid rgba(255, 106, 0, 0.2);
-            border-radius: 10px;
-            padding: 32px;
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.8), rgba(255, 106, 0, 0.03));
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            border-radius: 8px;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.6), rgba(255, 106, 0, 0.02));
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -285,49 +266,36 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 16px;
-        }
-
-        .connect-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 106, 0, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            gap: 14px;
         }
 
         .connect-card:hover {
             border-color: var(--orange);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 106, 0, 0.15);
-        }
-
-        .connect-card:hover::before {
-            opacity: 1;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(255, 106, 0, 0.12);
         }
 
         .connect-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--orange), var(--orange-light));
-            border-radius: 8px;
+            border-radius: 6px;
             display: grid;
             place-items: center;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #000;
         }
 
-        .connect-content h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
+        .connect-card h3 {
+            font-size: 15px;
+            margin: 0;
             font-weight: 600;
         }
 
         .connect-value {
             color: var(--orange);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             word-break: break-word;
         }
@@ -337,56 +305,43 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1px;
-            background: rgba(255, 106, 0, 0.1);
-            border-radius: 8px;
+            background: rgba(255, 106, 0, 0.12);
+            border-radius: 6px;
             overflow: hidden;
         }
 
         .driver {
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(255, 106, 0, 0.02));
-            padding: 40px 24px;
+            background: rgba(13, 13, 13, 0.8);
+            padding: 35px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s;
-        }
-
-        .driver::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 106, 0, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            transition: all 0.3s;
         }
 
         .driver:hover {
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.98), rgba(255, 106, 0, 0.08));
-        }
-
-        .driver:hover::before {
-            opacity: 1;
+            background: rgba(20, 20, 20, 0.95);
         }
 
         .driver-icon {
-            font-size: 40px;
+            font-size: 36px;
             color: var(--orange);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: block;
-            transition: transform 0.4s;
+            transition: transform 0.3s;
             font-weight: 700;
         }
 
         .driver:hover .driver-icon {
-            transform: scale(1.2) rotate(-5deg);
+            transform: scale(1.15);
         }
 
         .driver-label {
             display: block;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             font-size: 12px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             color: #fff;
         }
@@ -394,7 +349,7 @@
         .driver-text {
             font-size: 12px;
             color: #888;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* Activities Grid */
@@ -406,43 +361,42 @@
 
         .activity-card {
             border: 1px solid rgba(255, 106, 0, 0.15);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 40px;
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.7), rgba(255, 106, 0, 0.02));
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.6), rgba(255, 106, 0, 0.01));
             position: relative;
             overflow: hidden;
-            min-height: 200px;
+            min-height: 180px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: all 0.4s;
+            transition: all 0.3s;
         }
 
         .activity-card::before {
             content: "";
             position: absolute;
-            width: 200px;
-            height: 200px;
-            border: 1px solid rgba(255, 106, 0, 0.2);
-            right: -80px;
-            bottom: -100px;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(255, 106, 0, 0.15);
+            right: -60px;
+            bottom: -90px;
             transform: rotate(45deg);
-            transition: all 0.6s;
+            transition: all 0.5s;
         }
 
         .activity-card:hover {
             border-color: var(--orange);
-            transform: translateY(-6px);
+            transform: translateY(-4px);
         }
 
         .activity-card:hover::before {
-            transform: rotate(45deg) scale(1.2);
-            border-color: rgba(255, 106, 0, 0.4);
+            border-color: rgba(255, 106, 0, 0.3);
         }
 
         .activity-label {
             color: var(--orange);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-size: 11px;
             font-weight: 700;
             margin-bottom: 12px;
@@ -454,29 +408,28 @@
         .activity-description {
             color: #999;
             font-size: 14px;
-            line-height: 1.7;
+            line-height: 1.6;
             position: relative;
             z-index: 1;
-            max-width: 280px;
         }
 
         /* Quote */
         .quote-section {
             text-align: center;
-            padding: 100px 40px;
-            margin: 120px 0;
-            border-top: 1px solid rgba(255, 106, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 106, 0, 0.2);
+            padding: 80px 40px;
+            margin: 140px 0;
+            border-top: 1px solid rgba(255, 106, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 106, 0, 0.15);
             position: relative;
         }
 
         .quote-text {
-            font-size: 24px;
+            font-size: 22px;
             line-height: 1.8;
             letter-spacing: 1px;
-            color: #d0d0d0;
+            color: #ccc;
             font-weight: 300;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -488,16 +441,21 @@
         /* Footer */
         footer {
             padding: 60px 0;
-            border-top: 1px solid rgba(255, 106, 0, 0.15);
+            border-top: 1px solid rgba(255, 106, 0, 0.12);
             color: #666;
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 100px;
+        }
+
+        footer p {
+            margin: 8px 0;
         }
 
         footer a {
             color: var(--orange);
+            text-decoration: none;
             transition: color 0.3s;
         }
 
@@ -508,18 +466,22 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .wrap {
-                padding: 0 30px;
+                padding: 0 40px;
             }
 
             .hero {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 50px;
                 min-height: auto;
-                padding: 60px 0;
+                padding: 80px 0 60px;
             }
 
             .hero-visual {
-                height: 400px;
+                height: 450px;
+            }
+
+            h1 {
+                font-size: 70px;
             }
 
             .connect-grid,
@@ -533,11 +495,6 @@
 
             .drivers-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1px;
-            }
-
-            .section {
-                padding: 40px;
             }
         }
 
@@ -547,22 +504,21 @@
             }
 
             nav .links {
-                gap: 24px;
-                font-size: 10px;
+                gap: 20px;
+                font-size: 9px;
             }
 
             .wrap {
                 padding: 0 20px;
             }
 
-            .hero h1 {
-                font-size: clamp(48px, 10vw, 80px);
+            h1 {
+                font-size: 50px;
                 letter-spacing: -2px;
             }
 
-            .section {
-                margin: 60px 0;
-                padding: 30px;
+            .hero {
+                padding: 60px 0 40px;
             }
 
             .quote-section {
@@ -570,11 +526,15 @@
             }
 
             .quote-text {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .connect-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .drivers-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -596,19 +556,16 @@
         <section class="hero" id="profile">
             <div class="hero-content">
                 <div class="kicker">ARCHITECTURAL ENGINEER</div>
-                <h1>Maher<br><span class="accent">Ashraf</span></h1>
+                <h1><span class="name-white">Maher</span><br><span class="name-orange">Ashraf</span></h1>
                 <div class="role">Architectural Engineer</div>
-                <p class="tagline"><strong>Designing spaces.<br>Building impact.</strong></p>
-                <p style="margin-top: 30px; font-size: 16px; line-height: 1.8; color: #b8b8b8; max-width: 480px; font-weight: 400; letter-spacing: 0.5px;">
-                    <strong>NEW PERSPECTIVES.</strong><br>
-                    <strong style="color: var(--orange);">REAL SOLUTIONS.</strong>
-                </p>
+                <p class="tagline"><strong>Designing spaces.<br>Building <span class="orange">impact</span>.</strong></p>
+                <p class="perspectives"><strong>NEW PERSPECTIVES.</strong><br><strong style="color: var(--orange);">REAL SOLUTIONS.</strong></p>
             </div>
             <div class="hero-visual">
-                <svg viewBox="0 0 600 650" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <filter id="glow">
-                            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                            <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
                             <feMerge>
                                 <feMergeNode in="coloredBlur"/>
                                 <feMergeNode in="SourceGraphic"/>
@@ -616,93 +573,84 @@
                         </filter>
                     </defs>
 
-                    <!-- Ground/Base -->
-                    <line x1="50" y1="580" x2="550" y2="580" stroke="#444" stroke-width="2" opacity="0.5"/>
-                    
-                    <!-- Perspective grid lines on ground -->
-                    <line x1="80" y1="580" x2="150" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="150" y1="580" x2="220" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="220" y1="580" x2="290" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="290" y1="580" x2="360" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="360" y1="580" x2="430" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="430" y1="580" x2="500" y2="640" stroke="#333" stroke-width="1" opacity="0.3"/>
+                    <!-- Background perspective lines -->
+                    <line x1="350" y1="150" x2="250" y2="280" stroke="#444" stroke-width="1" opacity="0.3"/>
+                    <line x1="350" y1="150" x2="450" y2="280" stroke="#444" stroke-width="1" opacity="0.3"/>
+                    <line x1="250" y1="280" x2="250" y2="620" stroke="#444" stroke-width="0.8" opacity="0.2"/>
+                    <line x1="450" y1="280" x2="450" y2="620" stroke="#444" stroke-width="0.8" opacity="0.2"/>
 
-                    <!-- BACKGROUND BUILDING (LEFT BACK) -->
-                    <polygon points="100,250 180,180 180,580 100,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.4"/>
-                    <line x1="100" y1="330" x2="180" y2="270" stroke="#333" stroke-width="0.8" opacity="0.3"/>
-                    <line x1="100" y1="410" x2="180" y2="350" stroke="#333" stroke-width="0.8" opacity="0.3"/>
-                    <line x1="100" y1="490" x2="180" y2="430" stroke="#333" stroke-width="0.8" opacity="0.3"/>
+                    <!-- GROUND LINE -->
+                    <line x1="100" y1="620" x2="600" y2="620" stroke="#555" stroke-width="2" opacity="0.5"/>
 
-                    <!-- MAIN CENTER BUILDING (LARGE) -->
-                    <!-- Left face -->
-                    <polygon points="140,260 240,140 240,580 140,580" fill="none" stroke="#555" stroke-width="2.5"/>
+                    <!-- LEFT BUILDING (Small) -->
+                    <g opacity="0.8">
+                        <polygon points="150,400 200,350 200,620 150,620" fill="none" stroke="#666" stroke-width="1.5"/>
+                        <line x1="150" y1="470" x2="200" y2="420" stroke="#555" stroke-width="0.8" opacity="0.4"/>
+                        <!-- Window -->
+                        <rect x="165" y="380" width="25" height="55" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- MAIN CENTER BUILDING (Largest) -->
+                    <!-- Left side face -->
+                    <polygon points="220,300 300,200 300,620 220,620" fill="none" stroke="#777" stroke-width="2"/>
                     <!-- Front face -->
-                    <polygon points="240,140 420,140 420,580 240,580" fill="rgba(30,30,30,0.4)" stroke="#555" stroke-width="2.5"/>
-                    <!-- Right face -->
-                    <polygon points="420,140 480,200 480,580 420,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.6"/>
-                    <!-- Top roof -->
-                    <line x1="240" y1="140" x2="140" y2="260" stroke="#555" stroke-width="2.5"/>
-                    <line x1="240" y1="140" x2="420" y2="140" stroke="#555" stroke-width="2.5"/>
-                    <line x1="420" y1="140" x2="480" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                    <polygon points="300,200 500,200 500,620 300,620" fill="rgba(30,30,30,0.3)" stroke="#888" stroke-width="2.5"/>
+                    <!-- Right side face -->
+                    <polygon points="500,200 560,270 560,620 500,620" fill="none" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    
+                    <!-- Roof lines -->
+                    <line x1="300" y1="200" x2="220" y2="300" stroke="#777" stroke-width="2"/>
+                    <line x1="300" y1="200" x2="500" y2="200" stroke="#888" stroke-width="2.5"/>
+                    <line x1="500" y1="200" x2="560" y2="270" stroke="#555" stroke-width="1.5" opacity="0.6"/>
 
-                    <!-- Horizontal floor lines on main building -->
-                    <line x1="240" y1="220" x2="420" y2="220" stroke="#444" stroke-width="1" opacity="0.6"/>
-                    <line x1="240" y1="290" x2="420" y2="290" stroke="#444" stroke-width="1" opacity="0.6"/>
-                    <line x1="240" y1="360" x2="420" y2="360" stroke="#444" stroke-width="1" opacity="0.6"/>
-                    <line x1="240" y1="430" x2="420" y2="430" stroke="#444" stroke-width="1" opacity="0.6"/>
-                    <line x1="240" y1="500" x2="420" y2="500" stroke="#444" stroke-width="1" opacity="0.6"/>
+                    <!-- Vertical dividers on main building -->
+                    <line x1="380" y1="200" x2="380" y2="620" stroke="#666" stroke-width="1" opacity="0.4"/>
+                    <line x1="460" y1="200" x2="460" y2="620" stroke="#666" stroke-width="1" opacity="0.4"/>
 
-                    <!-- MAIN BUILDING WINDOWS - LARGE ORANGE -->
-                    <!-- Top row - outlined -->
-                    <rect x="270" y="160" width="50" height="50" fill="none" stroke="#ff6a00" stroke-width="2"/>
-                    <rect x="340" y="160" width="50" height="50" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <!-- Horizontal floor lines -->
+                    <line x1="300" y1="300" x2="500" y2="300" stroke="#555" stroke-width="1" opacity="0.5"/>
+                    <line x1="300" y1="380" x2="500" y2="380" stroke="#555" stroke-width="1" opacity="0.5"/>
+                    <line x1="300" y1="460" x2="500" y2="460" stroke="#555" stroke-width="1" opacity="0.5"/>
+                    <line x1="300" y1="540" x2="500" y2="540" stroke="#555" stroke-width="1" opacity="0.5"/>
 
-                    <!-- Second row - filled with glow -->
-                    <rect x="270" y="245" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
-                    <rect x="340" y="245" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <!-- MAIN BUILDING WINDOWS - LEFT SECTION (Outlined) -->
+                    <rect x="320" y="230" width="35" height="40" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="320" y="310" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="320" y="390" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="320" y="470" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
 
-                    <!-- Third row - filled -->
-                    <rect x="270" y="315" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
-                    <rect x="340" y="315" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <!-- MAIN BUILDING WINDOWS - CENTER SECTION (Mixed) -->
+                    <rect x="360" y="230" width="35" height="40" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
+                    <rect x="360" y="310" width="35" height="35" fill="#ff6a00" opacity="0.8" filter="url(#glow)"/>
+                    <rect x="360" y="390" width="35" height="35" fill="#ff6a00" opacity="0.8" filter="url(#glow)"/>
+                    <rect x="360" y="470" width="35" height="35" fill="#ff6a00" opacity="0.8" filter="url(#glow)"/>
 
-                    <!-- Fourth row - filled -->
-                    <rect x="270" y="385" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
-                    <rect x="340" y="385" width="50" height="45" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <!-- MAIN BUILDING WINDOWS - RIGHT SECTION (Filled) -->
+                    <rect x="400" y="230" width="35" height="40" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="400" y="310" width="35" height="35" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="400" y="390" width="35" height="35" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="400" y="470" width="35" height="35" fill="#ff6a00" opacity="0.85" filter="url(#glow)"/>
 
-                    <!-- Bottom row - outlined -->
-                    <rect x="270" y="455" width="50" height="45" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
-                    <rect x="340" y="455" width="50" height="45" fill="none" stroke="#ff6a00" stroke-width="1.5"/>
-
-                    <!-- RIGHT SIDE BUILDING (TALL) -->
-                    <polygon points="470,220 540,160 540,580 470,580" fill="none" stroke="#333" stroke-width="2" opacity="0.7"/>
-                    <line x1="470" y1="300" x2="540" y2="240" stroke="#333" stroke-width="1" opacity="0.5"/>
-                    <line x1="470" y1="380" x2="540" y2="320" stroke="#333" stroke-width="1" opacity="0.5"/>
-                    <line x1="470" y1="460" x2="540" y2="400" stroke="#333" stroke-width="1" opacity="0.5"/>
-
+                    <!-- RIGHT BUILDING (Tall) -->
+                    <polygon points="540,320 600,260 600,620 540,620" fill="none" stroke="#666" stroke-width="1.8" opacity="0.8"/>
+                    <line x1="540" y1="400" x2="600" y2="340" stroke="#555" stroke-width="0.8" opacity="0.4"/>
+                    <line x1="540" y1="480" x2="600" y2="420" stroke="#555" stroke-width="0.8" opacity="0.4"/>
+                    
                     <!-- Right building large windows -->
-                    <rect x="485" y="280" width="45" height="100" fill="#ff8a2a" opacity="0.8" filter="url(#glow)"/>
-                    <rect x="485" y="420" width="45" height="70" fill="#ff8a2a" opacity="0.8" filter="url(#glow)"/>
+                    <rect x="555" y="350" width="30" height="80" fill="#ff8a2a" opacity="0.85" filter="url(#glow)"/>
+                    <rect x="555" y="470" width="30" height="60" fill="#ff8a2a" opacity="0.85" filter="url(#glow)"/>
 
-                    <!-- LEFT SIDE SMALL BUILDING -->
-                    <polygon points="80,380 140,340 140,580 80,580" fill="none" stroke="#333" stroke-width="1.5" opacity="0.5"/>
-                    <line x1="80" y1="460" x2="140" y2="420" stroke="#333" stroke-width="0.8" opacity="0.3"/>
+                    <!-- Vertical edge lines for 3D effect -->
+                    <line x1="220" y1="300" x2="220" y2="620" stroke="#777" stroke-width="2" opacity="0.7"/>
+                    <line x1="300" y1="200" x2="300" y2="620" stroke="#888" stroke-width="2.5" opacity="0.8"/>
+                    <line x1="500" y1="200" x2="500" y2="620" stroke="#888" stroke-width="2.5" opacity="0.8"/>
+                    <line x1="560" y1="270" x2="560" y2="620" stroke="#555" stroke-width="1.5" opacity="0.6"/>
 
-                    <!-- Left building window -->
-                    <rect x="95" y="400" width="35" height="60" fill="#ff6a00" opacity="0.7" filter="url(#glow)"/>
-
-                    <!-- Vertical lines for building structure -->
-                    <line x1="140" y1="260" x2="140" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
-                    <line x1="240" y1="140" x2="240" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
-                    <line x1="420" y1="140" x2="420" y2="580" stroke="#555" stroke-width="2" opacity="0.8"/>
-                    <line x1="480" y1="200" x2="480" y2="580" stroke="#333" stroke-width="1.5" opacity="0.6"/>
-
-                    <!-- Additional structural lines for depth -->
-                    <line x1="150" y1="160" x2="80" y2="240" stroke="#333" stroke-width="1" opacity="0.4"/>
-                    <line x1="310" y1="140" x2="250" y2="220" stroke="#333" stroke-width="1" opacity="0.3"/>
-                    <line x1="450" y1="140" x2="390" y2="200" stroke="#333" stroke-width="1" opacity="0.3"/>
-
-                    <!-- Subtle door outline -->
-                    <rect x="330" y="500" width="35" height="80" fill="none" stroke="#666" stroke-width="1"/>
+                    <!-- Floor platform lines (subtle perspective) -->
+                    <line x1="100" y1="620" x2="150" y2="670" stroke="#444" stroke-width="1" opacity="0.2"/>
+                    <line x1="200" y1="620" x2="250" y2="670" stroke="#444" stroke-width="1" opacity="0.2"/>
+                    <line x1="350" y1="620" x2="400" y2="670" stroke="#444" stroke-width="1" opacity="0.2"/>
+                    <line x1="500" y1="620" x2="550" y2="670" stroke="#444" stroke-width="1" opacity="0.2"/>
                 </svg>
             </div>
         </section>
@@ -713,58 +661,50 @@
             <div class="connect-grid">
                 <a href="https://wa.me/qr/RHYSXO7MKLHEC1" target="_blank" rel="noopener" class="connect-card">
                     <div class="connect-icon">W</div>
-                    <div class="connect-content">
-                        <h3>WhatsApp</h3>
-                        <div class="connect-value">+20 150 707 0441</div>
-                    </div>
+                    <h3>WhatsApp</h3>
+                    <div class="connect-value">+20 150 707 0441</div>
                 </a>
                 <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==" target="_blank" rel="noopener" class="connect-card">
                     <div class="connect-icon">@</div>
-                    <div class="connect-content">
-                        <h3>Instagram</h3>
-                        <div class="connect-value">@_maher_ashraf_</div>
-                    </div>
+                    <h3>Instagram</h3>
+                    <div class="connect-value">@_maher_ashraf_</div>
                 </a>
                 <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US" target="_blank" rel="noopener" class="connect-card">
                     <div class="connect-icon">S</div>
-                    <div class="connect-content">
-                        <h3>Snapchat</h3>
-                        <div class="connect-value">maher_ashraf7</div>
-                    </div>
+                    <h3>Snapchat</h3>
+                    <div class="connect-value">maher_ashraf7</div>
                 </a>
                 <a href="https://discord.com/users/maher_ashraf" target="_blank" rel="noopener" class="connect-card">
                     <div class="connect-icon">D</div>
-                    <div class="connect-content">
-                        <h3>Discord</h3>
-                        <div class="connect-value">maher_ashraf</div>
-                    </div>
+                    <h3>Discord</h3>
+                    <div class="connect-value">maher_ashraf</div>
                 </a>
             </div>
         </section>
 
-        <!-- Focus/Approach Section -->
+        <!-- Focus Section -->
         <section class="section" id="focus">
             <h2 class="section-title">WHAT DRIVES THE WORK</h2>
             <div class="drivers-grid">
                 <div class="driver">
                     <span class="driver-icon">▲</span>
                     <span class="driver-label">CREATE</span>
-                    <span class="driver-text">Transform ideas into purposeful spaces that resonate.</span>
+                    <span class="driver-text">Transform ideas into purposeful spaces.</span>
                 </div>
                 <div class="driver">
                     <span class="driver-icon">■</span>
                     <span class="driver-label">BUILD</span>
-                    <span class="driver-text">From concept to reality with precision and energy.</span>
+                    <span class="driver-text">From concept to reality with precision.</span>
                 </div>
                 <div class="driver">
                     <span class="driver-icon">►</span>
                     <span class="driver-label">EVOLVE</span>
-                    <span class="driver-text">Constantly push boundaries. Always moving forward.</span>
+                    <span class="driver-text">Always push. Always moving forward.</span>
                 </div>
                 <div class="driver">
                     <span class="driver-icon">◉</span>
                     <span class="driver-label">FOCUS</span>
-                    <span class="driver-text">Discipline in details. Freedom in thinking.</span>
+                    <span class="driver-text">Discipline in details. Freedom thinking.</span>
                 </div>
             </div>
         </section>
@@ -775,11 +715,11 @@
             <div class="activities-grid">
                 <div class="activity-card">
                     <div class="activity-label">PRECISION</div>
-                    <div class="activity-description">Clarity comes from movement. Think deeper while pushing limits. Endurance built through consistency and discipline.</div>
+                    <div class="activity-description">Clarity from movement. Think deeper while pushing limits. Endurance through consistency.</div>
                 </div>
                 <div class="activity-card">
                     <div class="activity-label">MOMENTUM</div>
-                    <div class="activity-description">Progress is incremental. Show up, execute, improve. Strength isn't just physical—it's the mindset that builds empires.</div>
+                    <div class="activity-description">Progress is incremental. Show up, execute, improve. Strength builds empires.</div>
                 </div>
             </div>
         </section>
@@ -792,7 +732,7 @@
         <!-- Footer -->
         <footer>
             <p>MAHER ASHRAF · ARCHITECTURAL ENGINEER · 2026</p>
-            <p style="margin-top: 20px;"><a href="https://discord.com/users/maher_ashraf">DISCORD</a> · <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==">INSTAGRAM</a> · <a href="https://wa.me/qr/RHYSXO7MKLHEC1">WHATSAPP</a> · <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US">SNAPCHAT</a></p>
+            <p><a href="https://discord.com/users/maher_ashraf">DISCORD</a> · <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==">INSTAGRAM</a> · <a href="https://wa.me/qr/RHYSXO7MKLHEC1">WHATSAPP</a> · <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US">SNAPCHAT</a></p>
         </footer>
     </div>
 </body>
