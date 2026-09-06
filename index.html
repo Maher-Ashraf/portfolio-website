@@ -219,133 +219,21 @@
             font-weight: 600;
         }
 
-        /* Hero Visual - Clean 3D Building */
+        /* Hero Visual - Architectural Building Drawing */
         .hero-visual {
             position: relative;
             height: 550px;
             display: flex;
             align-items: center;
             justify-content: center;
+            perspective: 1000px;
         }
 
-        .building-frame {
+        svg {
             width: 100%;
             height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Outer building structure */
-        .building {
-            position: relative;
-            width: 240px;
-            height: 320px;
-            border: 3px solid #333;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 1));
-            box-shadow: 
-                inset 0 0 80px rgba(255, 106, 0, 0.05),
-                0 0 120px rgba(255, 106, 0, 0.12);
-            transform: perspective(800px) rotateY(-18deg) rotateX(6deg);
-        }
-
-        /* Floors - horizontal lines */
-        .floor-line {
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #555, transparent);
-            left: 0;
-        }
-
-        .floor-line:nth-child(1) { top: 22%; }
-        .floor-line:nth-child(2) { top: 40%; }
-        .floor-line:nth-child(3) { top: 58%; }
-        .floor-line:nth-child(4) { top: 76%; }
-
-        /* Windows with glow */
-        .window-group {
-            position: absolute;
-            display: flex;
-            gap: 8px;
-        }
-
-        .window {
-            width: 28px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--orange), var(--orange-light));
-            box-shadow: 0 0 20px rgba(255, 106, 0, 0.5);
-            border-radius: 1px;
-            animation: flicker 3s ease-in-out infinite;
-        }
-
-        .window-group:nth-child(5) {
-            right: 25px;
-            top: 20%;
-        }
-
-        .window-group:nth-child(5) .window:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .window-group:nth-child(6) {
-            left: 30px;
-            top: 45%;
-        }
-
-        .window-group:nth-child(6) .window:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .window-group:nth-child(7) {
-            right: 30px;
-            bottom: 25%;
-        }
-
-        .window-group:nth-child(7) .window {
-            width: 38px;
-            height: 28px;
-        }
-
-        .window-group:nth-child(7) .window:nth-child(2) {
-            animation-delay: 0.7s;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-
-        /* Glow orbs around building */
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--orange), transparent);
-            filter: blur(50px);
-            opacity: 0.25;
-            animation: pulse-float 8s ease-in-out infinite;
-        }
-
-        .glow:nth-child(8) {
-            width: 250px;
-            height: 250px;
-            right: -80px;
-            top: -50px;
-            animation-delay: 0s;
-        }
-
-        .glow:nth-child(9) {
-            width: 180px;
-            height: 180px;
-            left: -60px;
-            bottom: -40px;
-            animation-delay: 3s;
-        }
-
-        @keyframes pulse-float {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
-            50% { transform: translateY(-25px) scale(1.1); opacity: 0.35; }
+            max-width: 500px;
+            filter: drop-shadow(0 0 80px rgba(255, 106, 0, 0.15));
         }
 
         /* Sections */
@@ -713,28 +601,82 @@
                 <p class="tagline"><strong>Vision translates into form.</strong> Ideas become structures. Spaces shape how people live, work, and connect. Every line, every surface, every detail—intentional. Every project drives forward.</p>
             </div>
             <div class="hero-visual">
-                <div class="building-frame">
-                    <div class="building">
-                        <div class="floor-line"></div>
-                        <div class="floor-line"></div>
-                        <div class="floor-line"></div>
-                        <div class="floor-line"></div>
-                        <div class="window-group">
-                            <div class="window"></div>
-                            <div class="window"></div>
-                        </div>
-                        <div class="window-group">
-                            <div class="window"></div>
-                            <div class="window"></div>
-                        </div>
-                        <div class="window-group">
-                            <div class="window"></div>
-                            <div class="window"></div>
-                        </div>
-                    </div>
-                    <div class="glow"></div>
-                    <div class="glow"></div>
-                </div>
+                <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Back perspective lines -->
+                    <line x1="250" y1="100" x2="180" y2="200" stroke="#444" stroke-width="1" opacity="0.3"/>
+                    <line x1="250" y1="100" x2="320" y2="200" stroke="#444" stroke-width="1" opacity="0.3"/>
+                    <line x1="180" y1="200" x2="180" y2="500" stroke="#444" stroke-width="1" opacity="0.3"/>
+                    <line x1="320" y1="200" x2="320" y2="500" stroke="#444" stroke-width="1" opacity="0.3"/>
+
+                    <!-- Main building left face -->
+                    <polygon points="100,250 180,200 180,500 100,500" fill="none" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- Main building front face -->
+                    <polygon points="180,200 350,200 350,500 180,500" fill="rgba(20,20,20,0.5)" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- Main building right face -->
+                    <polygon points="350,200 420,250 420,500 350,500" fill="none" stroke="#333" stroke-width="1" opacity="0.5"/>
+
+                    <!-- Roof -->
+                    <polygon points="180,200 350,200 250,100" fill="none" stroke="#333" stroke-width="2"/>
+
+                    <!-- Left side building (smaller) -->
+                    <polygon points="80,350 140,320 140,500 80,500" fill="none" stroke="#333" stroke-width="2" opacity="0.6"/>
+                    
+                    <!-- Right side building (taller) -->
+                    <polygon points="380,280 450,250 450,500 380,500" fill="none" stroke="#333" stroke-width="2" opacity="0.6"/>
+
+                    <!-- Ground/Base line -->
+                    <line x1="60" y1="500" x2="470" y2="500" stroke="#444" stroke-width="2" opacity="0.4"/>
+
+                    <!-- Horizontal floor lines on front -->
+                    <line x1="180" y1="280" x2="350" y2="280" stroke="#444" stroke-width="1"/>
+                    <line x1="180" y1="340" x2="350" y2="340" stroke="#444" stroke-width="1"/>
+                    <line x1="180" y1="400" x2="350" y2="400" stroke="#444" stroke-width="1"/>
+                    <line x1="180" y1="450" x2="350" y2="450" stroke="#444" stroke-width="1"/>
+
+                    <!-- Windows - Left upper -->
+                    <rect x="200" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="245" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="290" y="220" width="35" height="45" fill="none" stroke="#ff6a00" stroke-width="2"/>
+
+                    <!-- Windows - Second row -->
+                    <rect x="200" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <rect x="245" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <rect x="290" y="300" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+
+                    <!-- Windows - Third row -->
+                    <rect x="200" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <rect x="245" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+                    <rect x="290" y="360" width="35" height="35" fill="#ff6a00" opacity="0.7"/>
+
+                    <!-- Windows - Bottom row -->
+                    <rect x="200" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="245" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+                    <rect x="290" y="420" width="35" height="35" fill="none" stroke="#ff6a00" stroke-width="2"/>
+
+                    <!-- Right side building windows -->
+                    <rect x="395" y="340" width="40" height="80" fill="#ff8a2a" opacity="0.8"/>
+                    <rect x="395" y="430" width="40" height="50" fill="#ff8a2a" opacity="0.8"/>
+
+                    <!-- Left side building window -->
+                    <rect x="95" y="400" width="30" height="50" fill="#ff6a00" opacity="0.6"/>
+
+                    <!-- Door -->
+                    <rect x="260" y="440" width="30" height="60" fill="none" stroke="#666" stroke-width="1.5"/>
+
+                    <!-- Glow around windows -->
+                    <circle cx="217.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
+                    <circle cx="262.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
+                    <circle cx="307.5" cy="317.5" r="25" fill="none" stroke="#ff6a00" stroke-width="0.5" opacity="0.3"/>
+
+                    <!-- Decorative perspective grid on ground -->
+                    <line x1="60" y1="500" x2="150" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                    <line x1="100" y1="500" x2="180" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                    <line x1="140" y1="500" x2="210" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                    <line x1="350" y1="500" x2="420" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                    <line x1="390" y1="500" x2="460" y2="550" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+                </svg>
             </div>
         </section>
 
