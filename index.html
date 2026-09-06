@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Maher Ashraf — Architectural Engineer designing spaces, building impact.">
+    <title>Maher Ashraf | Architectural Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --panel: #111;
+            --line: #292929;
+            --text: #f3f3f3;
+            --muted: #a7a7a7;
+            --orange: #ff6a00;
+            --orange-light: #ff8a2a;
+            --orange-dark: #cc5400;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Grid background */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(255, 106, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 106, 0, 0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 106, 0, 0.3), transparent);
+            z-index: 100;
+        }
+
+        .wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: rgba(8, 8, 8, 0.7);
+            border-bottom: 1px solid rgba(255, 106, 0, 0.1);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: -2px;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            transform: skew(-10deg);
+            transition: all 0.3s;
+        }
+
+        .logo:hover {
+            transform: skew(-10deg) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.3);
+        }
+
+        nav .links {
+            display: flex;
+            gap: 48px;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav .links a {
+            color: #999;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav .links a::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s;
+        }
+
+        nav .links a:hover {
+            color: var(--orange);
+        }
+
+        nav .links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 720px;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(64px, 10vw, 140px);
+            line-height: 0.9;
+            letter-spacing: -4px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accent {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .kicker {
+            color: var(--orange);
+            letter-spacing: 3px;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .kicker::before {
+            content: "";
+            width: 20px;
+            height: 1px;
+            background: var(--orange);
+        }
+
+        .role {
+            font-size: 18px;
+            margin: 30px 0;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-weight: 500;
+        }
+
+        .role::before {
+            content: "";
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), transparent);
+        }
+
+        .tagline {
+            margin-top: 30px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #b8b8b8;
+            max-width: 480px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Hero Visual - 3D Building */
+        .hero-visual {
+            position: relative;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .building-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: perspective(1200px) rotateY(-20deg) rotateX(8deg);
+            transform-style: preserve-3d;
+        }
+
+        .building {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #333;
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.02), rgba(255, 106, 0, 0.01));
+            box-shadow: 
+                inset 0 0 60px rgba(255, 106, 0, 0.08),
+                0 0 100px rgba(255, 106, 0, 0.1);
+            border-radius: 2px;
+        }
+
+        .floor {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #555, transparent);
+        }
+
+        .floor:nth-child(1) { top: 20%; }
+        .floor:nth-child(2) { top: 35%; }
+        .floor:nth-child(3) { top: 52%; }
+        .floor:nth-child(4) { top: 68%; }
+
+        .window {
+            position: absolute;
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            opacity: 0.7;
+            box-shadow: 0 0 25px rgba(255, 106, 0, 0.4);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .window:nth-child(5) {
+            width: 50px;
+            height: 80px;
+            right: 20%;
+            top: 15%;
+            animation-delay: 0s;
+        }
+
+        .window:nth-child(6) {
+            width: 40px;
+            height: 70px;
+            right: 50%;
+            top: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .window:nth-child(7) {
+            width: 70px;
+            height: 50px;
+            right: 10%;
+            bottom: 22%;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--orange), transparent);
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glow-orb:nth-child(8) {
+            width: 200px;
+            height: 200px;
+            right: -50px;
+            top: -30px;
+            animation-delay: 0s;
+        }
+
+        .glow-orb:nth-child(9) {
+            width: 150px;
+            height: 150px;
+            left: -40px;
+            bottom: 100px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        .section {
+            margin: 120px 0;
+            padding: 60px;
+            border: 1px solid rgba(255, 106, 0, 0.15);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 106, 0, 0.02));
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 45px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 24px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        /* Connect Cards */
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .connect-card {
+            border: 1px solid rgba(255, 106, 0, 0.2);
+            border-radius: 10px;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.8), rgba(255, 106, 0, 0.03));
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .connect-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 106, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .connect-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 106, 0, 0.15);
+        }
+
+        .connect-card:hover::before {
+            opacity: 1;
+        }
+
+        .connect-icon {
+            font-size: 36px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .connect-content h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .connect-value {
+            color: var(--orange);
+            font-size: 13px;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        /* Drivers Grid */
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 106, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .driver {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(255, 106, 0, 0.02));
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .driver::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 106, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .driver:hover {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.98), rgba(255, 106, 0, 0.08));
+        }
+
+        .driver:hover::before {
+            opacity: 1;
+        }
+
+        .driver-icon {
+            font-size: 40px;
+            color: var(--orange);
+            margin-bottom: 16px;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .driver:hover .driver-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .driver-label {
+            display: block;
+            letter-spacing: 2.5px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .driver-text {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* Activities Grid */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .activity-card {
+            border: 1px solid rgba(255, 106, 0, 0.15);
+            border-radius: 10px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.7), rgba(255, 106, 0, 0.02));
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.4s;
+        }
+
+        .activity-card::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(255, 106, 0, 0.2);
+            right: -80px;
+            bottom: -100px;
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .activity-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-6px);
+        }
+
+        .activity-card:hover::before {
+            transform: rotate(45deg) scale(1.2);
+            border-color: rgba(255, 106, 0, 0.4);
+        }
+
+        .activity-label {
+            color: var(--orange);
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-description {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            max-width: 280px;
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            padding: 100px 40px;
+            margin: 120px 0;
+            border-top: 1px solid rgba(255, 106, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 106, 0, 0.2);
+            position: relative;
+        }
+
+        .quote-mark {
+            font-size: 64px;
+            color: var(--orange);
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .quote-text {
+            font-size: 24px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+            color: #d0d0d0;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-text strong {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 106, 0, 0.15);
+            color: #666;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--orange);
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--orange-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .wrap {
+                padding: 0 30px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                min-height: auto;
+                padding: 60px 0;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .connect-grid,
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .connect-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .drivers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
+            }
+
+            .section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: 70px;
+            }
+
+            nav .links {
+                gap: 24px;
+                font-size: 10px;
+            }
+
+            .wrap {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: clamp(48px, 10vw, 80px);
+                letter-spacing: -2px;
+            }
+
+            .section {
+                margin: 60px 0;
+                padding: 30px;
+            }
+
+            .quote-section {
+                padding: 60px 20px;
+            }
+
+            .quote-text {
+                font-size: 18px;
+            }
+
+            .connect-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">M</div>
+            <div class="links">
+                <a href="#profile">PROFILE</a>
+                <a href="#focus">FOCUS</a>
+                <a href="#approach">APPROACH</a>
+                <a href="#connect">CONNECT</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="profile">
+            <div class="hero-content">
+                <div class="kicker">ARCHITECTURAL ENGINEER</div>
+                <h1>Maher<br><span class="accent">Ashraf</span></h1>
+                <div class="role">Designing Spaces. Building Impact.</div>
+                <p class="tagline"><strong>Vision translates into form.</strong> Ideas become structures. Spaces shape how people live, work, and connect. Every line, every surface, every detail—intentional. Every project drives forward.</p>
+            </div>
+            <div class="hero-visual">
+                <div class="building-container">
+                    <div class="building">
+                        <div class="floor"></div>
+                        <div class="floor"></div>
+                        <div class="floor"></div>
+                        <div class="floor"></div>
+                        <div class="window"></div>
+                        <div class="window"></div>
+                        <div class="window"></div>
+                    </div>
+                    <div class="glow-orb"></div>
+                    <div class="glow-orb"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section class="section" id="connect">
+            <h2 class="section-title">LET'S CONNECT</h2>
+            <div class="connect-grid">
+                <a href="https://wa.me/qr/RHYSXO7MKLHEC1" target="_blank" rel="noopener" class="connect-card">
+                    <div class="connect-icon">💬</div>
+                    <div class="connect-content">
+                        <h3>WhatsApp</h3>
+                        <div class="connect-value">+20 150 707 0441</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==" target="_blank" rel="noopener" class="connect-card">
+                    <div class="connect-icon">📷</div>
+                    <div class="connect-content">
+                        <h3>Instagram</h3>
+                        <div class="connect-value">@_maher_ashraf_</div>
+                    </div>
+                </a>
+                <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US" target="_blank" rel="noopener" class="connect-card">
+                    <div class="connect-icon">👻</div>
+                    <div class="connect-content">
+                        <h3>Snapchat</h3>
+                        <div class="connect-value">maher_ashraf7</div>
+                    </div>
+                </a>
+                <a href="https://discord.gg/maher_ashraf" target="_blank" rel="noopener" class="connect-card">
+                    <div class="connect-icon">⚡</div>
+                    <div class="connect-content">
+                        <h3>Discord</h3>
+                        <div class="connect-value">join server</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Focus/Approach Section -->
+        <section class="section" id="focus">
+            <h2 class="section-title">WHAT DRIVES THE WORK</h2>
+            <div class="drivers-grid">
+                <div class="driver">
+                    <span class="driver-icon">◣</span>
+                    <span class="driver-label">CREATE</span>
+                    <span class="driver-text">Transform ideas into purposeful spaces that resonate.</span>
+                </div>
+                <div class="driver">
+                    <span class="driver-icon">◤</span>
+                    <span class="driver-label">BUILD</span>
+                    <span class="driver-text">From concept to reality with precision and energy.</span>
+                </div>
+                <div class="driver">
+                    <span class="driver-icon">↗</span>
+                    <span class="driver-label">EVOLVE</span>
+                    <span class="driver-text">Constantly push boundaries. Always moving forward.</span>
+                </div>
+                <div class="driver">
+                    <span class="driver-icon">⊙</span>
+                    <span class="driver-label">FOCUS</span>
+                    <span class="driver-text">Discipline in details. Freedom in thinking.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach Section -->
+        <section class="section" id="approach">
+            <h2 class="section-title">BEYOND THE STUDIO</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-label">PRECISION</div>
+                    <div class="activity-description">Clarity comes from movement. Think deeper while pushing limits. Endurance built through consistency and discipline.</div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-label">MOMENTUM</div>
+                    <div class="activity-description">Progress is incremental. Show up, execute, improve. Strength isn't just physical—it's the mindset that builds empires.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <div class="quote-mark">❝</div>
+            <p class="quote-text">INSTINCT FUELS <strong>ACTION.</strong><br>ACTION CREATES <strong>RESULTS.</strong></p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>MAHER ASHRAF · ARCHITECTURAL ENGINEER · 2026</p>
+            <p style="margin-top: 20px;"><a href="https://discord.gg/maher_ashraf">DISCORD</a> · <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==">INSTAGRAM</a> · <a href="https://wa.me/qr/RHYSXO7MKLHEC1">WHATSAPP</a> · <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US">SNAPCHAT</a></p>
+        </footer>
+    </div>
+</body>
+</html>
