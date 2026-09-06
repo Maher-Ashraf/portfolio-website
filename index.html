@@ -219,7 +219,7 @@
             font-weight: 600;
         }
 
-        /* Hero Visual - 3D Building */
+        /* Hero Visual - Clean 3D Building */
         .hero-visual {
             position: relative;
             height: 550px;
@@ -228,106 +228,124 @@
             justify-content: center;
         }
 
-        .building-container {
+        .building-frame {
             width: 100%;
             height: 100%;
             position: relative;
-            transform: perspective(1200px) rotateY(-20deg) rotateX(8deg);
-            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Outer building structure */
         .building {
-            position: absolute;
-            width: 280px;
-            height: 380px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid #333;
-            background: linear-gradient(135deg, rgba(255, 106, 0, 0.02), rgba(255, 106, 0, 0.01));
+            position: relative;
+            width: 240px;
+            height: 320px;
+            border: 3px solid #333;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 1));
             box-shadow: 
-                inset 0 0 60px rgba(255, 106, 0, 0.08),
-                0 0 100px rgba(255, 106, 0, 0.1);
-            border-radius: 2px;
+                inset 0 0 80px rgba(255, 106, 0, 0.05),
+                0 0 120px rgba(255, 106, 0, 0.12);
+            transform: perspective(800px) rotateY(-18deg) rotateX(6deg);
         }
 
-        .floor {
+        /* Floors - horizontal lines */
+        .floor-line {
             position: absolute;
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, #555, transparent);
+            left: 0;
         }
 
-        .floor:nth-child(1) { top: 20%; }
-        .floor:nth-child(2) { top: 35%; }
-        .floor:nth-child(3) { top: 52%; }
-        .floor:nth-child(4) { top: 68%; }
+        .floor-line:nth-child(1) { top: 22%; }
+        .floor-line:nth-child(2) { top: 40%; }
+        .floor-line:nth-child(3) { top: 58%; }
+        .floor-line:nth-child(4) { top: 76%; }
+
+        /* Windows with glow */
+        .window-group {
+            position: absolute;
+            display: flex;
+            gap: 8px;
+        }
 
         .window {
-            position: absolute;
+            width: 28px;
+            height: 45px;
             background: linear-gradient(135deg, var(--orange), var(--orange-light));
-            opacity: 0.7;
-            box-shadow: 0 0 25px rgba(255, 106, 0, 0.4);
-            animation: pulse-glow 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.5);
+            border-radius: 1px;
+            animation: flicker 3s ease-in-out infinite;
         }
 
-        .window:nth-child(5) {
-            width: 50px;
-            height: 80px;
-            right: 20%;
-            top: 15%;
-            animation-delay: 0s;
+        .window-group:nth-child(5) {
+            right: 25px;
+            top: 20%;
         }
 
-        .window:nth-child(6) {
-            width: 40px;
-            height: 70px;
-            right: 50%;
-            top: 40%;
-            animation-delay: 0.6s;
+        .window-group:nth-child(5) .window:nth-child(2) {
+            animation-delay: 0.3s;
         }
 
-        .window:nth-child(7) {
-            width: 70px;
-            height: 50px;
-            right: 10%;
-            bottom: 22%;
-            animation-delay: 1.2s;
+        .window-group:nth-child(6) {
+            left: 30px;
+            top: 45%;
         }
 
-        @keyframes pulse-glow {
+        .window-group:nth-child(6) .window:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .window-group:nth-child(7) {
+            right: 30px;
+            bottom: 25%;
+        }
+
+        .window-group:nth-child(7) .window {
+            width: 38px;
+            height: 28px;
+        }
+
+        .window-group:nth-child(7) .window:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes flicker {
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
         }
 
-        .glow-orb {
+        /* Glow orbs around building */
+        .glow {
             position: absolute;
             border-radius: 50%;
             background: radial-gradient(circle, var(--orange), transparent);
-            filter: blur(40px);
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+            filter: blur(50px);
+            opacity: 0.25;
+            animation: pulse-float 8s ease-in-out infinite;
         }
 
-        .glow-orb:nth-child(8) {
-            width: 200px;
-            height: 200px;
-            right: -50px;
-            top: -30px;
+        .glow:nth-child(8) {
+            width: 250px;
+            height: 250px;
+            right: -80px;
+            top: -50px;
             animation-delay: 0s;
         }
 
-        .glow-orb:nth-child(9) {
-            width: 150px;
-            height: 150px;
-            left: -40px;
-            bottom: 100px;
-            animation-delay: 2s;
+        .glow:nth-child(9) {
+            width: 180px;
+            height: 180px;
+            left: -60px;
+            bottom: -40px;
+            animation-delay: 3s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        @keyframes pulse-float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+            50% { transform: translateY(-25px) scale(1.1); opacity: 0.35; }
         }
 
         /* Sections */
@@ -376,8 +394,10 @@
             position: relative;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            text-align: center;
+            gap: 16px;
         }
 
         .connect-card::before {
@@ -400,9 +420,15 @@
         }
 
         .connect-icon {
-            font-size: 36px;
-            color: var(--orange);
-            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
         }
 
         .connect-content h3 {
@@ -460,10 +486,11 @@
             margin-bottom: 16px;
             display: block;
             transition: transform 0.4s;
+            font-weight: 700;
         }
 
         .driver:hover .driver-icon {
-            transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.2) rotate(-5deg);
         }
 
         .driver-label {
@@ -553,13 +580,6 @@
             border-top: 1px solid rgba(255, 106, 0, 0.2);
             border-bottom: 1px solid rgba(255, 106, 0, 0.2);
             position: relative;
-        }
-
-        .quote-mark {
-            font-size: 64px;
-            color: var(--orange);
-            margin-bottom: 20px;
-            opacity: 0.3;
         }
 
         .quote-text {
@@ -693,18 +713,27 @@
                 <p class="tagline"><strong>Vision translates into form.</strong> Ideas become structures. Spaces shape how people live, work, and connect. Every line, every surface, every detail—intentional. Every project drives forward.</p>
             </div>
             <div class="hero-visual">
-                <div class="building-container">
+                <div class="building-frame">
                     <div class="building">
-                        <div class="floor"></div>
-                        <div class="floor"></div>
-                        <div class="floor"></div>
-                        <div class="floor"></div>
-                        <div class="window"></div>
-                        <div class="window"></div>
-                        <div class="window"></div>
+                        <div class="floor-line"></div>
+                        <div class="floor-line"></div>
+                        <div class="floor-line"></div>
+                        <div class="floor-line"></div>
+                        <div class="window-group">
+                            <div class="window"></div>
+                            <div class="window"></div>
+                        </div>
+                        <div class="window-group">
+                            <div class="window"></div>
+                            <div class="window"></div>
+                        </div>
+                        <div class="window-group">
+                            <div class="window"></div>
+                            <div class="window"></div>
+                        </div>
                     </div>
-                    <div class="glow-orb"></div>
-                    <div class="glow-orb"></div>
+                    <div class="glow"></div>
+                    <div class="glow"></div>
                 </div>
             </div>
         </section>
@@ -714,28 +743,28 @@
             <h2 class="section-title">LET'S CONNECT</h2>
             <div class="connect-grid">
                 <a href="https://wa.me/qr/RHYSXO7MKLHEC1" target="_blank" rel="noopener" class="connect-card">
-                    <div class="connect-icon">💬</div>
+                    <div class="connect-icon">W</div>
                     <div class="connect-content">
                         <h3>WhatsApp</h3>
                         <div class="connect-value">+20 150 707 0441</div>
                     </div>
                 </a>
                 <a href="https://www.instagram.com/_maher_ashraf_?stkn=MTllbjExanUzOWltdw==" target="_blank" rel="noopener" class="connect-card">
-                    <div class="connect-icon">📷</div>
+                    <div class="connect-icon">@</div>
                     <div class="connect-content">
                         <h3>Instagram</h3>
                         <div class="connect-value">@_maher_ashraf_</div>
                     </div>
                 </a>
                 <a href="https://www.snapchat.com/add/maher_ashraf7?share_id=wu-Sq9OywaY&locale=en-US" target="_blank" rel="noopener" class="connect-card">
-                    <div class="connect-icon">👻</div>
+                    <div class="connect-icon">S</div>
                     <div class="connect-content">
                         <h3>Snapchat</h3>
                         <div class="connect-value">maher_ashraf7</div>
                     </div>
                 </a>
                 <a href="https://discord.gg/maher_ashraf" target="_blank" rel="noopener" class="connect-card">
-                    <div class="connect-icon">⚡</div>
+                    <div class="connect-icon">D</div>
                     <div class="connect-content">
                         <h3>Discord</h3>
                         <div class="connect-value">join server</div>
@@ -749,22 +778,22 @@
             <h2 class="section-title">WHAT DRIVES THE WORK</h2>
             <div class="drivers-grid">
                 <div class="driver">
-                    <span class="driver-icon">◣</span>
+                    <span class="driver-icon">▲</span>
                     <span class="driver-label">CREATE</span>
                     <span class="driver-text">Transform ideas into purposeful spaces that resonate.</span>
                 </div>
                 <div class="driver">
-                    <span class="driver-icon">◤</span>
+                    <span class="driver-icon">■</span>
                     <span class="driver-label">BUILD</span>
                     <span class="driver-text">From concept to reality with precision and energy.</span>
                 </div>
                 <div class="driver">
-                    <span class="driver-icon">↗</span>
+                    <span class="driver-icon">►</span>
                     <span class="driver-label">EVOLVE</span>
                     <span class="driver-text">Constantly push boundaries. Always moving forward.</span>
                 </div>
                 <div class="driver">
-                    <span class="driver-icon">⊙</span>
+                    <span class="driver-icon">◉</span>
                     <span class="driver-label">FOCUS</span>
                     <span class="driver-text">Discipline in details. Freedom in thinking.</span>
                 </div>
@@ -788,7 +817,6 @@
 
         <!-- Quote -->
         <section class="quote-section">
-            <div class="quote-mark">❝</div>
             <p class="quote-text">INSTINCT FUELS <strong>ACTION.</strong><br>ACTION CREATES <strong>RESULTS.</strong></p>
         </section>
 
